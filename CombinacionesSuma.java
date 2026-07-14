@@ -1,31 +1,10 @@
-/*
- * =====================================================================
- *  Actividad 6 - Ejercicios Practicos Java (trabajo colaborativo)
- *  Programa 1: Combinaciones de dos arreglos cuya suma es igual a k
- * ---------------------------------------------------------------------
- *  Autor: Daniel Velasco
- *  IDE:   Eclipse / NetBeans (Java estandar)
- *
- *  Descripcion:
- *  Se capturan dos arreglos de 6 posiciones con numeros ingresados por
- *  el usuario y una constante k (tambien ingresada por el usuario).
- *  El programa determina y CUENTA cuantas combinaciones (un valor del
- *  primer arreglo + un valor del segundo arreglo) suman exactamente k,
- *  y muestra cada combinacion encontrada.
- *
- *  Convencion del enunciado: en cada combinacion (a, b) el primer
- *  elemento (a) es un valor del PRIMER arreglo y el segundo (b) es un
- *  valor del SEGUNDO arreglo.
- * =====================================================================
- */
-
 import java.util.Scanner;
 
 public class CombinacionesSuma {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);   // objeto para leer datos por teclado
+        Scanner sc = new Scanner(System.in);
 
         final int TAM = 6;                      // tamano fijo de cada arreglo
         int[] arreglo1 = new int[TAM];          // primer arreglo de 6 posiciones
@@ -50,14 +29,13 @@ public class CombinacionesSuma {
         }
 
         // 4) Recorrer todas las combinaciones posibles (arr1[i] + arr2[j])
-        //    y contar/mostrar las que sean iguales a k.
-        int contador = 0;                       // cuenta las combinaciones validas
+        int contador = 0;                     
         System.out.println("\nCombinaciones cuya suma es igual a " + k + ":");
 
         for (int i = 0; i < TAM; i++) {
             for (int j = 0; j < TAM; j++) {
                 if (arreglo1[i] + arreglo2[j] == k) {
-                    contador++;                 // se encontro una combinacion valida
+                    contador++;                
                     System.out.println("  (" + arreglo1[i] + ", " + arreglo2[j] + ")");
                 }
             }
