@@ -44,7 +44,7 @@
   header.top p{margin:2px 0;opacity:.92;font-size:15px}
   .names{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
   .names .slot{
-    background:rgba(255,255,255,.13);border:1px dashed rgba(255,255,255,.45);
+    background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.35);
     padding:7px 14px;border-radius:999px;font-size:14px;
   }
 
@@ -174,36 +174,35 @@
   <header class="top">
     <div class="tag">Lógica de Programación &middot; Actividad 6 &middot; Java</div>
     <h1>Guion visual del video</h1>
-    <p>Ejercicios prácticos en Java — trabajo colaborativo. Duración sugerida: 6 a 9 minutos.</p>
+    <p>Ejercicios prácticos en Java. Duración sugerida: 5 a 8 minutos.</p>
     <div class="names">
-      <span class="slot">Integrante 1: ______________________</span>
-      <span class="slot">Integrante 2: ______________________</span>
+      <span class="slot">Autor: Daniel Velasco</span>
     </div>
   </header>
 
   <div class="howto">
     <b>Cómo usar este guion:</b> a la izquierda está el <b>bloque de código</b> que debes mostrar en pantalla (Eclipse o NetBeans); a la derecha, entre comillas, está <b>lo que debes decir</b> mientras lo muestras. Sigue las filas de arriba hacia abajo.
     <div class="legend">
-      <span><span class="dot" style="background:var(--p1)"></span> Programa 1 · lo narra el Integrante 1</span>
-      <span><span class="dot" style="background:var(--p2)"></span> Programa 2 · lo narra el Integrante 2</span>
+      <span><span class="dot" style="background:var(--p1)"></span> Programa 1</span>
+      <span><span class="dot" style="background:var(--p2)"></span> Programa 2</span>
       <span><span class="dot" style="background:#e0a92e"></span> Nota para aclarar ante el docente</span>
     </div>
-    <div style="margin-top:8px">Pueden intercambiar las partes; lo importante es que <b>ambos hablen</b> y que se hagan <b>3 pruebas por programa</b>.</div>
+    <div style="margin-top:8px">Lo importante es que se te vea ejecutando el código y que hagas <b>3 pruebas por programa</b>.</div>
   </div>
 
   <!-- =================== INTRODUCCIÓN =================== -->
   <div class="section">
-    <h2 style="background:#33465c"><span class="step">00</span> Introducción · ≈30 s · (ambos en cámara)</h2>
+    <h2 style="background:#33465c"><span class="step">00</span> Introducción · ≈30 s</h2>
   </div>
   <div class="row">
     <div class="code">
       <span class="lbl">En pantalla</span>
-<pre><span class="com">// Portada con los nombres de los 2 integrantes</span>
+<pre><span class="com">// Portada con tu nombre: Daniel Velasco</span>
 <span class="com">// y el título: "Actividad 6 - Java"</span></pre>
     </div>
     <div class="say">
-      <span class="who">Integrante 1 y 2</span>
-      <p class="txt">Hola, somos [Integrante 1] e [Integrante 2]. En este video presentamos la Actividad 6 de Lógica de Programación, hecha en lenguaje Java. Mostramos dos programas: el primero cuenta las combinaciones de dos arreglos cuya suma es igual a una constante k, y el segundo suma por separado los números pares e impares de un arreglo de 10 posiciones. De cada uno explicamos su diagrama de flujo, su código por partes, y hacemos tres pruebas.</p>
+      <span class="who">Daniel Velasco</span>
+      <p class="txt">Hola, soy Daniel Velasco. En este video presento la Actividad 6 de Lógica de Programación, hecha en lenguaje Java. Muestro dos programas: el primero cuenta las combinaciones de dos arreglos cuya suma es igual a una constante k, y el segundo suma por separado los números pares e impares de un arreglo de 10 posiciones. De cada uno explico su diagrama de flujo, su código por partes, y hago tres pruebas.</p>
     </div>
   </div>
 
@@ -216,8 +215,8 @@
   <div class="diagram p1">
     <img src="diagrama_01_combinaciones_suma.jpg" alt="Diagrama de flujo del Programa 1">
     <div class="say">
-      <span class="who">Integrante 1</span>
-      <p class="txt">Este es el diagrama del primer programa. Empieza en INICIO; se lee la constante k y luego se llenan los dos arreglos de 6 posiciones. Se pone el contador en cero y entramos a dos ciclos anidados: el de afuera con el índice i recorre el primer arreglo, y el de adentro con el índice j recorre el segundo. Adentro se pregunta si arreglo1[i] más arreglo2[j] es igual a k: si es verdadero, sumamos uno al contador y mostramos el par; si es falso, seguimos. Al terminar los dos ciclos se muestra el total.</p>
+      <span class="who">Daniel</span>
+      <p class="txt">Este es el diagrama del primer programa. Empieza en INICIO; se lee la constante k y luego se llenan los dos arreglos de 6 posiciones. Se pone el contador en cero y entro a dos ciclos anidados: el de afuera con el índice i recorre el primer arreglo, y el de adentro con el índice j recorre el segundo. Adentro pregunto si arreglo1[i] más arreglo2[j] es igual a k: si es verdadero, sumo uno al contador y muestro el par; si es falso, sigo. Al terminar los dos ciclos se muestra el total.</p>
     </div>
   </div>
 
@@ -236,8 +235,8 @@
     <span class="kw">int</span>[] arreglo2 = <span class="kw">new int</span>[TAM];</pre>
     </div>
     <div class="say">
-      <span class="who">Integrante 1</span>
-      <p class="txt">Aquí preparamos todo. Importamos la clase Scanner, que nos permite leer datos por teclado. Definimos TAM en 6, que es el tamaño de cada arreglo, y creamos los dos arreglos de enteros: arreglo1 y arreglo2, cada uno de seis posiciones.</p>
+      <span class="who">Daniel</span>
+      <p class="txt">Aquí preparo todo. Importo la clase Scanner, que me permite leer datos por teclado. Defino TAM en 6, que es el tamaño de cada arreglo, y creo los dos arreglos de enteros: arreglo1 y arreglo2, cada uno de seis posiciones.</p>
     </div>
   </div>
 
@@ -248,8 +247,8 @@
 <span class="kw">int</span> k = sc.nextInt();</pre>
     </div>
     <div class="say">
-      <span class="who">Integrante 1</span>
-      <p class="txt">Lo primero que pedimos al usuario es la constante k. Ese es el número contra el que vamos a comparar todas las sumas. Lo guardamos en la variable k.</p>
+      <span class="who">Daniel</span>
+      <p class="txt">Lo primero que le pido al usuario es la constante k. Ese es el número contra el que voy a comparar todas las sumas. Lo guardo en la variable k.</p>
     </div>
   </div>
 
@@ -262,8 +261,8 @@
 }</pre>
     </div>
     <div class="say">
-      <span class="who">Integrante 1</span>
-      <p class="txt">Con este ciclo for llenamos el primer arreglo. El ciclo se repite seis veces, una por cada posición, y en cada vuelta le pedimos un número al usuario y lo guardamos en arreglo1. El segundo arreglo se llena exactamente igual con otro ciclo.</p>
+      <span class="who">Daniel</span>
+      <p class="txt">Con este ciclo for lleno el primer arreglo. El ciclo se repite seis veces, una por cada posición, y en cada vuelta le pido un número al usuario y lo guardo en arreglo1. El segundo arreglo se llena exactamente igual con otro ciclo.</p>
       <div class="show"><b>Muestra:</b> el bloque del segundo arreglo es idéntico pero usando <b>arreglo2</b> y el índice <b>j</b>.</div>
     </div>
   </div>
@@ -282,8 +281,8 @@
 }</pre>
     </div>
     <div class="say">
-      <span class="who">Integrante 1</span>
-      <p class="txt">Este es el corazón del programa. El contador arranca en cero. El ciclo de afuera toma cada valor del primer arreglo y el de adentro lo combina con cada valor del segundo, así probamos todas las combinaciones posibles. Cuando la suma de los dos da exactamente k, sumamos uno al contador y mostramos ese par en pantalla.</p>
+      <span class="who">Daniel</span>
+      <p class="txt">Este es el corazón del programa. El contador arranca en cero. El ciclo de afuera toma cada valor del primer arreglo y el de adentro lo combina con cada valor del segundo, así pruebo todas las combinaciones posibles. Cuando la suma de los dos da exactamente k, sumo uno al contador y muestro ese par en pantalla.</p>
     </div>
   </div>
 
@@ -296,8 +295,8 @@
 System.out.println(<span class="str">"\nTotal de combinaciones encontradas: "</span> + contador);</pre>
     </div>
     <div class="say">
-      <span class="who">Integrante 1</span>
-      <p class="txt">Al final, si el contador quedó en cero avisamos que no hubo ninguna combinación. Y en todos los casos mostramos el total de combinaciones que se encontraron.</p>
+      <span class="who">Daniel</span>
+      <p class="txt">Al final, si el contador quedó en cero aviso que no hubo ninguna combinación. Y en todos los casos muestro el total de combinaciones que se encontraron.</p>
     </div>
   </div>
 
@@ -341,7 +340,7 @@ Total: 0</pre>
       <span class="res">✔ 0 combinaciones</span>
     </div>
     <div class="say-strip">
-      Integrante 1: “En la primera prueba salen los seis pares que suman 7. En la segunda, con otros valores y k igual a 13, también hay seis. Y en la tercera, como ninguna suma llega a 100, el programa avisa que no hay combinaciones.”
+      Tú: “En la primera prueba salen los seis pares que suman 7. En la segunda, con otros valores y k igual a 13, también hay seis. Y en la tercera, como ninguna suma llega a 100, el programa avisa que no hay combinaciones.”
     </div>
   </div>
 
@@ -354,8 +353,8 @@ Total: 0</pre>
   <div class="diagram p2">
     <img src="diagrama_02_suma_pares_impares.jpg" alt="Diagrama de flujo del Programa 2">
     <div class="say">
-      <span class="who i2">Integrante 2</span>
-      <p class="txt">Este diagrama también arranca en INICIO. Leemos los 10 números del arreglo y ponemos en cero los dos acumuladores: sumaPares y sumaImpares. Después un ciclo con el índice i recorre el arreglo y, para cada número, pregunta si el residuo de dividirlo entre dos es cero. Si es verdadero, el número es par y se suma a sumaPares; si es falso, es impar y se suma a sumaImpares. Al terminar el ciclo mostramos las dos sumatorias.</p>
+      <span class="who i2">Daniel</span>
+      <p class="txt">Este diagrama también arranca en INICIO. Leo los 10 números del arreglo y pongo en cero los dos acumuladores: sumaPares y sumaImpares. Después un ciclo con el índice i recorre el arreglo y, para cada número, pregunto si el residuo de dividirlo entre dos es cero. Si es verdadero, el número es par y se suma a sumaPares; si es falso, es impar y se suma a sumaImpares. Al terminar el ciclo muestro las dos sumatorias.</p>
     </div>
   </div>
 
@@ -375,8 +374,8 @@ Total: 0</pre>
     <span class="kw">int</span> sumaImpares = <span class="num">0</span>;</pre>
     </div>
     <div class="say">
-      <span class="who i2">Integrante 2</span>
-      <p class="txt">Preparamos el programa: importamos Scanner para leer por teclado, definimos TAM en 10 y creamos el arreglo de enteros. También creamos dos variables acumuladoras, sumaPares y sumaImpares, ambas en cero, donde iremos guardando los resultados.</p>
+      <span class="who i2">Daniel</span>
+      <p class="txt">Preparo el programa: importo Scanner para leer por teclado, defino TAM en 10 y creo el arreglo de enteros. También creo dos variables acumuladoras, sumaPares y sumaImpares, ambas en cero, donde iré guardando los resultados.</p>
     </div>
   </div>
 
@@ -389,8 +388,8 @@ Total: 0</pre>
 }</pre>
     </div>
     <div class="say">
-      <span class="who i2">Integrante 2</span>
-      <p class="txt">Con este ciclo for llenamos el arreglo. Se repite diez veces y en cada vuelta le pedimos un número entero al usuario y lo guardamos en la posición correspondiente.</p>
+      <span class="who i2">Daniel</span>
+      <p class="txt">Con este ciclo for lleno el arreglo. Se repite diez veces y en cada vuelta le pido un número entero al usuario y lo guardo en la posición correspondiente.</p>
     </div>
   </div>
 
@@ -406,8 +405,8 @@ Total: 0</pre>
 }</pre>
     </div>
     <div class="say">
-      <span class="who i2">Integrante 2</span>
-      <p class="txt">Aquí está la lógica principal. Recorremos el arreglo y usamos el operador módulo, que da el residuo de una división. Si al dividir el número entre dos el residuo es cero, es par y lo sumamos a sumaPares; en caso contrario es impar y lo sumamos a sumaImpares.</p>
+      <span class="who i2">Daniel</span>
+      <p class="txt">Aquí está la lógica principal. Recorro el arreglo y uso el operador módulo, que da el residuo de una división. Si al dividir el número entre dos el residuo es cero, es par y lo sumo a sumaPares; en caso contrario es impar y lo sumo a sumaImpares.</p>
     </div>
   </div>
 
@@ -418,8 +417,8 @@ Total: 0</pre>
 System.out.println(<span class="str">"La sumatoria de numeros impares es:  "</span> + sumaImpares);</pre>
     </div>
     <div class="say">
-      <span class="who i2">Integrante 2</span>
-      <p class="txt">Y para terminar, imprimimos en pantalla las dos sumatorias: primero la de los pares y luego la de los impares.</p>
+      <span class="who i2">Daniel</span>
+      <p class="txt">Y para terminar, imprimo en pantalla las dos sumatorias: primero la de los pares y luego la de los impares.</p>
     </div>
   </div>
 
@@ -453,17 +452,17 @@ Impares: 13</pre>
       <span class="res">✔ 16 y 13</span>
     </div>
     <div class="say-strip">
-      Integrante 2: “En la primera, los pares 4, 8, 10, 6 y 2 dan 30, y los impares 7, 9, 11, 13 y 1 dan 41. En la segunda todos son pares, así que impares queda en cero. Y en la tercera vemos que también funciona con negativos: el cero se toma como par.”
+      Tú: “En la primera, los pares 4, 8, 10, 6 y 2 dan 30, y los impares 7, 9, 11, 13 y 1 dan 41. En la segunda todos son pares, así que impares queda en cero. Y en la tercera vemos que también funciona con negativos: el cero se toma como par.”
     </div>
   </div>
 
   <!-- =================== CIERRE =================== -->
   <div class="close">
-    <h3>Cierre · ≈20 s · (ambos)</h3>
-    <p style="font-style:italic;color:var(--muted)">“En resumen, aplicamos arreglos, ciclos for, ciclos anidados, condicionales y el operador módulo para resolver los dos ejercicios en Java. Gracias por ver el video.”</p>
+    <h3>Cierre · ≈20 s</h3>
+    <p style="font-style:italic;color:var(--muted)">“En resumen, apliqué arreglos, ciclos for, ciclos anidados, condicionales y el operador módulo para resolver los dos ejercicios en Java. Gracias por ver el video.”</p>
     <h3 style="margin-top:18px">Checklist antes de subir</h3>
     <ul class="check">
-      <li>Aparecen y hablan los 2 integrantes</li>
+      <li>Apareces o se te escucha narrando el video</li>
       <li>Se ejecutó el código en pantalla (Eclipse/NetBeans)</li>
       <li>3 pruebas por programa como mínimo</li>
       <li>Se explicó el diagrama de flujo de cada programa</li>

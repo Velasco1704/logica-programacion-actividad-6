@@ -1,18 +1,18 @@
 # Guion del video — Actividad 6 (Ejercicios Prácticos Java)
 
-**Duración sugerida:** 6 a 9 minutos
-**Participan los 2 integrantes del grupo** (el criterio lo pide explícitamente).
+**Duración sugerida:** 5 a 8 minutos
+**Autor:** Daniel Velasco (trabajo individual).
 **Qué tener abierto antes de grabar:** Eclipse o NetBeans con los dos `.java` listos para ejecutar, y los dos diagramas de flujo (`diagrama_01_*.jpg` y `diagrama_02_*.jpg`) abiertos en el visor de imágenes.
 
-> Convención: en *cursiva* va lo que **dices**; entre corchetes **[ ]** va lo que **muestras en pantalla**. Repártanse las partes entre los dos integrantes (por ejemplo: uno explica el Programa 1 y el otro el Programa 2).
+> Convención: en *cursiva* va lo que **dices**; entre corchetes **[ ]** va lo que **muestras en pantalla**.
 
 ---
 
 ## 0. Introducción (≈30 s)
 
-[Pantalla con los nombres de los integrantes visibles]
+[Pantalla con tu nombre visible: Daniel Velasco]
 
-*"Hola, somos [Integrante 1] e [Integrante 2]. En este video presentamos la Actividad 6 de Lógica de Programación, desarrollada en lenguaje Java. Vamos a mostrar dos programas: el primero cuenta las combinaciones de dos arreglos cuya suma es igual a una constante k, y el segundo calcula la suma de números pares e impares de un arreglo de 10 posiciones. De cada programa explicamos su diagrama de flujo, su lógica, y ejecutamos mínimo tres pruebas."*
+*"Hola, soy Daniel Velasco. En este video presento la Actividad 6 de Lógica de Programación, desarrollada en lenguaje Java. Voy a mostrar dos programas: el primero cuenta las combinaciones de dos arreglos cuya suma es igual a una constante k, y el segundo calcula la suma de números pares e impares de un arreglo de 10 posiciones. De cada programa explico su diagrama de flujo, su lógica, y ejecuto mínimo tres pruebas."*
 
 ---
 
@@ -26,7 +26,7 @@
 ### 1.2 Explicación del código
 [Muestra `CombinacionesSuma.java` y ve señalando]
 
-*"En el código usamos la clase Scanner para leer por teclado. `TAM` vale 6, que es el tamaño de cada arreglo. Con dos ciclos `for` llenamos `arreglo1` y `arreglo2`. Luego el doble `for` recorre todas las combinaciones posibles; cada vez que la suma coincide con k, incrementamos `cont` y mostramos el par. Al final imprimimos cuántas combinaciones se encontraron."*
+*"En el código uso la clase Scanner para leer por teclado. `TAM` vale 6, que es el tamaño de cada arreglo. Con dos ciclos `for` lleno `arreglo1` y `arreglo2`. Luego el doble `for` recorre todas las combinaciones posibles; cada vez que la suma coincide con k, incremento `cont` y muestro el par. Al final imprimo cuántas combinaciones se encontraron."*
 
 > Aclaración recomendada (para el punto del enunciado que habla de “12”):
 > *"El enunciado menciona 12 combinaciones contando las simétricas. Como en el ejemplo los dos arreglos son iguales, las simétricas ya quedan incluidas en la misma lista: (6,1) es la simétrica de (1,6), (5,2) de (2,5), y así. Por eso el programa cuenta 6 pares ordenados, que son exactamente los que el enunciado lista."*
@@ -40,7 +40,7 @@ Salida esperada:
 (1, 6)  (2, 5)  (3, 4)  (4, 3)  (5, 2)  (6, 1)
 Total de combinaciones encontradas: 6
 ```
-*"Aquí obtenemos los seis pares que suman 7."*
+*"Aquí obtengo los seis pares que suman 7."*
 
 **Prueba 2 — Arreglos distintos**
 [Ingresa: k=13, arreglo1 = 2 4 6 8 10 12, arreglo2 = 1 3 5 7 9 11]
@@ -49,7 +49,7 @@ Salida esperada:
 (2, 11)  (4, 9)  (6, 7)  (8, 5)  (10, 3)  (12, 1)
 Total de combinaciones encontradas: 6
 ```
-*"Con otros valores y k=13 encontramos seis combinaciones."*
+*"Con otros valores y k=13 encuentro seis combinaciones."*
 
 **Prueba 3 — Sin combinaciones**
 [Ingresa: k=100, arreglo1 = 1 1 1 1 1 1, arreglo2 = 1 1 1 1 1 1]
@@ -72,7 +72,7 @@ Total de combinaciones encontradas: 0
 ### 2.2 Explicación del código
 [Muestra `SumaParesImpares.java`]
 
-*"Aquí `TAM` vale 10. Llenamos el arreglo con un ciclo `for`. Después recorremos el arreglo y usamos el operador módulo `%`: si el residuo al dividir entre 2 es cero, el número es par; de lo contrario es impar. Cada número se acumula en la variable que corresponde. Al final imprimimos ambas sumas."*
+*"Aquí `TAM` vale 10. Lleno el arreglo con un ciclo `for`. Después recorro el arreglo y uso el operador módulo `%`: si el residuo al dividir entre 2 es cero, el número es par; de lo contrario es impar. Cada número se acumula en la variable que corresponde. Al final imprimo ambas sumas."*
 
 ### 2.3 Pruebas (mínimo 3)
 
@@ -107,12 +107,12 @@ La sumatoria de numeros impares es: 13
 
 ## 3. Cierre (≈20 s)
 
-*"En resumen, aplicamos arreglos, ciclos `for`, ciclos anidados, condicionales y el operador módulo para resolver los dos ejercicios en Java. Gracias por ver el video."*
+*"En resumen, apliqué arreglos, ciclos `for`, ciclos anidados, condicionales y el operador módulo para resolver los dos ejercicios en Java. Gracias por ver el video."*
 
 ---
 
 ### Lista de verificación antes de subir
-- [ ] Aparecen y hablan los **2 integrantes**.
+- [ ] Apareces o se te escucha narrando el video.
 - [ ] Se ejecutó el código en pantalla (Eclipse/NetBeans).
 - [ ] **3 pruebas por programa** como mínimo.
 - [ ] Se explicó el **diagrama de flujo** de cada programa.
