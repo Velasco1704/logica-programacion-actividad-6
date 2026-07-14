@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guion visual del video — Actividad 6 (Java)</title>
+<style>
+  :root{
+    --bg:#f4f6fb;
+    --card:#ffffff;
+    --ink:#1f2430;
+    --muted:#5b6472;
+    --line:#e2e7f0;
+    --p1:#2f7d8f;      /* programa 1 */
+    --p1soft:#e2f1f4;
+    --p2:#8a5a1e;      /* programa 2 */
+    --p2soft:#f7ecdb;
+    --say:#f6f8fc;
+    --code-bg:#1e2430;
+    --code-ink:#e8ecf4;
+    --kw:#c792ea;      /* keyword */
+    --str:#c3e88d;     /* string */
+    --num:#f78c6c;     /* number */
+    --com:#7a869b;     /* comment */
+    --ok:#2e7d32;
+    --okbg:#e7f5e9;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+    line-height:1.55;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 22px 60px}
+
+  /* ---------- Encabezado ---------- */
+  header.top{
+    background:linear-gradient(135deg,#26303f,#33465c);
+    color:#fff;border-radius:16px;padding:26px 30px;margin-bottom:22px;
+    box-shadow:0 8px 24px rgba(20,30,50,.18);
+  }
+  header.top .tag{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+  header.top h1{margin:6px 0 4px;font-size:27px}
+  header.top p{margin:2px 0;opacity:.92;font-size:15px}
+  .names{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+  .names .slot{
+    background:rgba(255,255,255,.13);border:1px dashed rgba(255,255,255,.45);
+    padding:7px 14px;border-radius:999px;font-size:14px;
+  }
+
+  /* ---------- Leyenda / instrucciones ---------- */
+  .howto{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:14px 18px;margin-bottom:26px;font-size:14.5px;color:var(--muted);
+  }
+  .howto b{color:var(--ink)}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px}
+  .legend span{display:inline-flex;align-items:center;gap:7px;font-size:13.5px}
+  .dot{width:13px;height:13px;border-radius:4px;display:inline-block}
+
+  /* ---------- Secciones de programa ---------- */
+  .section{margin:34px 0 10px}
+  .section h2{
+    display:flex;align-items:center;gap:12px;font-size:22px;margin:0 0 4px;
+    padding:12px 18px;border-radius:12px;color:#fff;
+  }
+  .section.p1 h2{background:var(--p1)}
+  .section.p2 h2{background:var(--p2)}
+  .section .step{
+    display:inline-block;font-size:13px;font-weight:700;background:rgba(255,255,255,.25);
+    padding:2px 10px;border-radius:999px;
+  }
+
+  .block-title{
+    margin:26px 0 10px;font-size:15px;font-weight:700;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.06em;
+  }
+
+  /* ---------- Fila de diagrama ---------- */
+  .diagram{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px;margin:14px 0 6px;display:grid;grid-template-columns:1.15fr 1fr;gap:20px;align-items:center;
+  }
+  .diagram img{width:100%;border:1px solid var(--line);border-radius:10px;background:#fff}
+  .diagram .say{align-self:center}
+
+  /* ---------- Filas de código + narración ---------- */
+  .row{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:0;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    overflow:hidden;margin:14px 0;box-shadow:0 3px 10px rgba(30,40,60,.05);
+  }
+  .row .code{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;overflow:auto}
+  .row .code .lbl{
+    font-family:"Segoe UI",sans-serif;font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;color:#8fa0bd;margin-bottom:8px;display:block;
+  }
+  pre{margin:0;font-family:"JetBrains Mono","Fira Code","Consolas",monospace;
+    font-size:13.4px;line-height:1.65;white-space:pre;color:var(--code-ink)}
+  .kw{color:var(--kw)} .str{color:var(--str)} .num{color:var(--num)} .com{color:var(--com)}
+  .fn{color:#82aaff}
+
+  .row .say{padding:16px 20px;background:var(--say)}
+  .say .who{
+    font-size:12.5px;font-weight:700;color:#fff;background:var(--p1);
+    padding:2px 10px;border-radius:999px;display:inline-block;margin-bottom:8px;
+  }
+  .p2 .say .who,.who.i2{background:var(--p2)}
+  .say p{margin:0 0 8px}
+  .say .txt::before{content:"\201C";color:var(--muted)}
+  .say .txt::after{content:"\201D";color:var(--muted)}
+  .say .txt{font-style:italic}
+  .say .show{
+    margin-top:10px;font-size:13px;color:var(--muted);
+    border-top:1px dashed var(--line);padding-top:8px;
+  }
+  .say .show b{color:var(--ink)}
+
+  /* ---------- Pruebas ---------- */
+  .tests{margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .test{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:14px 15px;border-top:4px solid var(--p1);
+  }
+  .p2 .test{border-top-color:var(--p2)}
+  .test h4{margin:0 0 8px;font-size:14.5px}
+  .test .io{font-size:12.5px;color:var(--muted);margin-bottom:4px}
+  .test code,.test pre.out{
+    display:block;background:#0f1420;color:#e8ecf4;border-radius:8px;
+    padding:8px 10px;font-family:"JetBrains Mono","Consolas",monospace;
+    font-size:12px;white-space:pre-wrap;margin:4px 0 8px;line-height:1.5;
+  }
+  .test .res{
+    display:inline-block;font-size:12.5px;font-weight:700;color:var(--ok);
+    background:var(--okbg);padding:3px 9px;border-radius:6px;
+  }
+  .say-strip{
+    grid-column:1/-1;background:var(--say);border:1px solid var(--line);
+    border-radius:10px;padding:10px 14px;font-style:italic;color:var(--ink);font-size:13.6px;
+  }
+
+  /* ---------- Nota ---------- */
+  .note{
+    background:#fff7e6;border:1px solid #f0d79a;border-left:5px solid #e0a92e;
+    border-radius:10px;padding:14px 16px;margin:16px 0;font-size:14px;
+  }
+  .note b{color:#9a6a00}
+
+  /* ---------- Cierre / checklist ---------- */
+  .close{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:30px}
+  .close h3{margin:0 0 8px}
+  ul.check{list-style:none;padding:0;margin:10px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  ul.check li{background:var(--say);border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-size:14px}
+  ul.check li::before{content:"\2610  ";color:var(--muted);font-weight:700}
+
+  footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:30px}
+
+  @media (max-width:820px){
+    .row,.diagram{grid-template-columns:1fr}
+    .tests{grid-template-columns:1fr}
+    ul.check{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff}
+    .row,.diagram,.test,.close,.howto{box-shadow:none}
+    .section{break-inside:avoid}
+    .row{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="tag">Lógica de Programación &middot; Actividad 6 &middot; Java</div>
+    <h1>Guion visual del video</h1>
+    <p>Ejercicios prácticos en Java — trabajo colaborativo. Duración sugerida: 6 a 9 minutos.</p>
+    <div class="names">
+      <span class="slot">Integrante 1: ______________________</span>
+      <span class="slot">Integrante 2: ______________________</span>
+    </div>
+  </header>
+
+  <div class="howto">
+    <b>Cómo usar este guion:</b> a la izquierda está el <b>bloque de código</b> que debes mostrar en pantalla (Eclipse o NetBeans); a la derecha, entre comillas, está <b>lo que debes decir</b> mientras lo muestras. Sigue las filas de arriba hacia abajo.
+    <div class="legend">
+      <span><span class="dot" style="background:var(--p1)"></span> Programa 1 · lo narra el Integrante 1</span>
+      <span><span class="dot" style="background:var(--p2)"></span> Programa 2 · lo narra el Integrante 2</span>
+      <span><span class="dot" style="background:#e0a92e"></span> Nota para aclarar ante el docente</span>
+    </div>
+    <div style="margin-top:8px">Pueden intercambiar las partes; lo importante es que <b>ambos hablen</b> y que se hagan <b>3 pruebas por programa</b>.</div>
+  </div>
+
+  <!-- =================== INTRODUCCIÓN =================== -->
+  <div class="section">
+    <h2 style="background:#33465c"><span class="step">00</span> Introducción · ≈30 s · (ambos en cámara)</h2>
+  </div>
+  <div class="row">
+    <div class="code">
+      <span class="lbl">En pantalla</span>
+<pre><span class="com">// Portada con los nombres de los 2 integrantes</span>
+<span class="com">// y el título: "Actividad 6 - Java"</span></pre>
+    </div>
+    <div class="say">
+      <span class="who">Integrante 1 y 2</span>
+      <p class="txt">Hola, somos [Integrante 1] e [Integrante 2]. En este video presentamos la Actividad 6 de Lógica de Programación, hecha en lenguaje Java. Mostramos dos programas: el primero cuenta las combinaciones de dos arreglos cuya suma es igual a una constante k, y el segundo suma por separado los números pares e impares de un arreglo de 10 posiciones. De cada uno explicamos su diagrama de flujo, su código por partes, y hacemos tres pruebas.</p>
+    </div>
+  </div>
+
+  <!-- =================== PROGRAMA 1 =================== -->
+  <div class="section p1">
+    <h2><span class="step">Programa 1</span> Combinaciones cuya suma es igual a k</h2>
+  </div>
+
+  <div class="block-title">Paso 1 · Explicar el diagrama de flujo</div>
+  <div class="diagram p1">
+    <img src="diagrama_01_combinaciones_suma.jpg" alt="Diagrama de flujo del Programa 1">
+    <div class="say">
+      <span class="who">Integrante 1</span>
+      <p class="txt">Este es el diagrama del primer programa. Empieza en INICIO; se lee la constante k y luego se llenan los dos arreglos de 6 posiciones. Se pone el contador en cero y entramos a dos ciclos anidados: el de afuera con el índice i recorre el primer arreglo, y el de adentro con el índice j recorre el segundo. Adentro se pregunta si arreglo1[i] más arreglo2[j] es igual a k: si es verdadero, sumamos uno al contador y mostramos el par; si es falso, seguimos. Al terminar los dos ciclos se muestra el total.</p>
+    </div>
+  </div>
+
+  <div class="block-title">Paso 2 · Recorrer el código por bloques</div>
+
+  <div class="row p1">
+    <div class="code">
+      <span class="lbl">Bloque 1 · Preparación</span>
+<pre><span class="kw">import</span> java.util.Scanner;
+
+<span class="kw">public class</span> <span class="fn">CombinacionesSuma</span> {
+  <span class="kw">public static void</span> <span class="fn">main</span>(String[] args) {
+    Scanner sc = <span class="kw">new</span> Scanner(System.in);
+    <span class="kw">final int</span> TAM = <span class="num">6</span>;
+    <span class="kw">int</span>[] arreglo1 = <span class="kw">new int</span>[TAM];
+    <span class="kw">int</span>[] arreglo2 = <span class="kw">new int</span>[TAM];</pre>
+    </div>
+    <div class="say">
+      <span class="who">Integrante 1</span>
+      <p class="txt">Aquí preparamos todo. Importamos la clase Scanner, que nos permite leer datos por teclado. Definimos TAM en 6, que es el tamaño de cada arreglo, y creamos los dos arreglos de enteros: arreglo1 y arreglo2, cada uno de seis posiciones.</p>
+    </div>
+  </div>
+
+  <div class="row p1">
+    <div class="code">
+      <span class="lbl">Bloque 2 · Leer la constante k</span>
+<pre>System.out.print(<span class="str">"Ingrese el valor de la constante k: "</span>);
+<span class="kw">int</span> k = sc.nextInt();</pre>
+    </div>
+    <div class="say">
+      <span class="who">Integrante 1</span>
+      <p class="txt">Lo primero que pedimos al usuario es la constante k. Ese es el número contra el que vamos a comparar todas las sumas. Lo guardamos en la variable k.</p>
+    </div>
+  </div>
+
+  <div class="row p1">
+    <div class="code">
+      <span class="lbl">Bloque 3 · Llenar el primer arreglo</span>
+<pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; TAM; i++) {
+  System.out.print(<span class="str">"Arreglo 1 - posicion "</span> + (i+<span class="num">1</span>) + <span class="str">": "</span>);
+  arreglo1[i] = sc.nextInt();
+}</pre>
+    </div>
+    <div class="say">
+      <span class="who">Integrante 1</span>
+      <p class="txt">Con este ciclo for llenamos el primer arreglo. El ciclo se repite seis veces, una por cada posición, y en cada vuelta le pedimos un número al usuario y lo guardamos en arreglo1. El segundo arreglo se llena exactamente igual con otro ciclo.</p>
+      <div class="show"><b>Muestra:</b> el bloque del segundo arreglo es idéntico pero usando <b>arreglo2</b> y el índice <b>j</b>.</div>
+    </div>
+  </div>
+
+  <div class="row p1">
+    <div class="code">
+      <span class="lbl">Bloque 4 · Doble ciclo: contar y mostrar</span>
+<pre><span class="kw">int</span> contador = <span class="num">0</span>;
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; TAM; i++) {
+  <span class="kw">for</span> (<span class="kw">int</span> j = <span class="num">0</span>; j &lt; TAM; j++) {
+    <span class="kw">if</span> (arreglo1[i] + arreglo2[j] == k) {
+      contador++;
+      System.out.println(<span class="str">"  ("</span> + arreglo1[i] + <span class="str">", "</span> + arreglo2[j] + <span class="str">")"</span>);
+    }
+  }
+}</pre>
+    </div>
+    <div class="say">
+      <span class="who">Integrante 1</span>
+      <p class="txt">Este es el corazón del programa. El contador arranca en cero. El ciclo de afuera toma cada valor del primer arreglo y el de adentro lo combina con cada valor del segundo, así probamos todas las combinaciones posibles. Cuando la suma de los dos da exactamente k, sumamos uno al contador y mostramos ese par en pantalla.</p>
+    </div>
+  </div>
+
+  <div class="row p1">
+    <div class="code">
+      <span class="lbl">Bloque 5 · Resultado final</span>
+<pre><span class="kw">if</span> (contador == <span class="num">0</span>) {
+  System.out.println(<span class="str">"  No existen combinaciones que sumen "</span> + k + <span class="str">"."</span>);
+}
+System.out.println(<span class="str">"\nTotal de combinaciones encontradas: "</span> + contador);</pre>
+    </div>
+    <div class="say">
+      <span class="who">Integrante 1</span>
+      <p class="txt">Al final, si el contador quedó en cero avisamos que no hubo ninguna combinación. Y en todos los casos mostramos el total de combinaciones que se encontraron.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Aclaración para el video:</b> el enunciado habla de “12 combinaciones y sus simétricas”. Como en el ejemplo los dos arreglos son iguales (1 a 6), las simétricas <b>ya están dentro</b> de la misma lista: (6,1) es la simétrica de (1,6), (5,2) la de (2,5), y así. Por eso el resultado correcto son <b>6 pares</b>, que son justo los que el enunciado enumera. Dilo así en el video para dejar claro que el conteo está bien.
+  </div>
+
+  <div class="block-title">Paso 3 · Pruebas en vivo (mínimo 3)</div>
+  <div class="tests p1">
+    <div class="test">
+      <h4>Prueba 1 · Ejemplo del enunciado</h4>
+      <div class="io">Entrada — k = 7</div>
+      <code>arreglo1: 1 2 3 4 5 6
+arreglo2: 1 2 3 4 5 6</code>
+      <div class="io">Salida:</div>
+      <pre class="out">(1,6) (2,5) (3,4)
+(4,3) (5,2) (6,1)
+Total: 6</pre>
+      <span class="res">✔ 6 combinaciones</span>
+    </div>
+    <div class="test">
+      <h4>Prueba 2 · Arreglos distintos</h4>
+      <div class="io">Entrada — k = 13</div>
+      <code>arreglo1: 2 4 6 8 10 12
+arreglo2: 1 3 5 7 9 11</code>
+      <div class="io">Salida:</div>
+      <pre class="out">(2,11) (4,9) (6,7)
+(8,5) (10,3) (12,1)
+Total: 6</pre>
+      <span class="res">✔ 6 combinaciones</span>
+    </div>
+    <div class="test">
+      <h4>Prueba 3 · Sin combinaciones</h4>
+      <div class="io">Entrada — k = 100</div>
+      <code>arreglo1: 1 1 1 1 1 1
+arreglo2: 1 1 1 1 1 1</code>
+      <div class="io">Salida:</div>
+      <pre class="out">No existen
+combinaciones...
+Total: 0</pre>
+      <span class="res">✔ 0 combinaciones</span>
+    </div>
+    <div class="say-strip">
+      Integrante 1: “En la primera prueba salen los seis pares que suman 7. En la segunda, con otros valores y k igual a 13, también hay seis. Y en la tercera, como ninguna suma llega a 100, el programa avisa que no hay combinaciones.”
+    </div>
+  </div>
+
+  <!-- =================== PROGRAMA 2 =================== -->
+  <div class="section p2">
+    <h2><span class="step">Programa 2</span> Sumatoria de pares e impares</h2>
+  </div>
+
+  <div class="block-title">Paso 1 · Explicar el diagrama de flujo</div>
+  <div class="diagram p2">
+    <img src="diagrama_02_suma_pares_impares.jpg" alt="Diagrama de flujo del Programa 2">
+    <div class="say">
+      <span class="who i2">Integrante 2</span>
+      <p class="txt">Este diagrama también arranca en INICIO. Leemos los 10 números del arreglo y ponemos en cero los dos acumuladores: sumaPares y sumaImpares. Después un ciclo con el índice i recorre el arreglo y, para cada número, pregunta si el residuo de dividirlo entre dos es cero. Si es verdadero, el número es par y se suma a sumaPares; si es falso, es impar y se suma a sumaImpares. Al terminar el ciclo mostramos las dos sumatorias.</p>
+    </div>
+  </div>
+
+  <div class="block-title">Paso 2 · Recorrer el código por bloques</div>
+
+  <div class="row p2">
+    <div class="code">
+      <span class="lbl">Bloque 1 · Preparación</span>
+<pre><span class="kw">import</span> java.util.Scanner;
+
+<span class="kw">public class</span> <span class="fn">SumaParesImpares</span> {
+  <span class="kw">public static void</span> <span class="fn">main</span>(String[] args) {
+    Scanner sc = <span class="kw">new</span> Scanner(System.in);
+    <span class="kw">final int</span> TAM = <span class="num">10</span>;
+    <span class="kw">int</span>[] numeros = <span class="kw">new int</span>[TAM];
+    <span class="kw">int</span> sumaPares = <span class="num">0</span>;
+    <span class="kw">int</span> sumaImpares = <span class="num">0</span>;</pre>
+    </div>
+    <div class="say">
+      <span class="who i2">Integrante 2</span>
+      <p class="txt">Preparamos el programa: importamos Scanner para leer por teclado, definimos TAM en 10 y creamos el arreglo de enteros. También creamos dos variables acumuladoras, sumaPares y sumaImpares, ambas en cero, donde iremos guardando los resultados.</p>
+    </div>
+  </div>
+
+  <div class="row p2">
+    <div class="code">
+      <span class="lbl">Bloque 2 · Llenar el arreglo</span>
+<pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; TAM; i++) {
+  System.out.print(<span class="str">"Posicion "</span> + (i+<span class="num">1</span>) + <span class="str">": "</span>);
+  numeros[i] = sc.nextInt();
+}</pre>
+    </div>
+    <div class="say">
+      <span class="who i2">Integrante 2</span>
+      <p class="txt">Con este ciclo for llenamos el arreglo. Se repite diez veces y en cada vuelta le pedimos un número entero al usuario y lo guardamos en la posición correspondiente.</p>
+    </div>
+  </div>
+
+  <div class="row p2">
+    <div class="code">
+      <span class="lbl">Bloque 3 · Clasificar par o impar</span>
+<pre><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; TAM; i++) {
+  <span class="kw">if</span> (numeros[i] % <span class="num">2</span> == <span class="num">0</span>) {
+    sumaPares += numeros[i];
+  } <span class="kw">else</span> {
+    sumaImpares += numeros[i];
+  }
+}</pre>
+    </div>
+    <div class="say">
+      <span class="who i2">Integrante 2</span>
+      <p class="txt">Aquí está la lógica principal. Recorremos el arreglo y usamos el operador módulo, que da el residuo de una división. Si al dividir el número entre dos el residuo es cero, es par y lo sumamos a sumaPares; en caso contrario es impar y lo sumamos a sumaImpares.</p>
+    </div>
+  </div>
+
+  <div class="row p2">
+    <div class="code">
+      <span class="lbl">Bloque 4 · Mostrar resultados</span>
+<pre>System.out.println(<span class="str">"\nLa sumatoria de numeros pares es:   "</span> + sumaPares);
+System.out.println(<span class="str">"La sumatoria de numeros impares es:  "</span> + sumaImpares);</pre>
+    </div>
+    <div class="say">
+      <span class="who i2">Integrante 2</span>
+      <p class="txt">Y para terminar, imprimimos en pantalla las dos sumatorias: primero la de los pares y luego la de los impares.</p>
+    </div>
+  </div>
+
+  <div class="block-title">Paso 3 · Pruebas en vivo (mínimo 3)</div>
+  <div class="tests p2">
+    <div class="test">
+      <h4>Prueba 1 · Ejemplo del enunciado</h4>
+      <div class="io">Entrada:</div>
+      <code>4 7 8 9 10 11 13 6 2 1</code>
+      <div class="io">Salida:</div>
+      <pre class="out">Pares:   30
+Impares: 41</pre>
+      <span class="res">✔ 30 y 41</span>
+    </div>
+    <div class="test">
+      <h4>Prueba 2 · Todos pares</h4>
+      <div class="io">Entrada:</div>
+      <code>2 4 6 8 10 12 14 16 18 20</code>
+      <div class="io">Salida:</div>
+      <pre class="out">Pares:   110
+Impares: 0</pre>
+      <span class="res">✔ 110 y 0</span>
+    </div>
+    <div class="test">
+      <h4>Prueba 3 · Negativos y cero</h4>
+      <div class="io">Entrada:</div>
+      <code>-5 -4 3 2 7 0 -1 8 9 10</code>
+      <div class="io">Salida:</div>
+      <pre class="out">Pares:   16
+Impares: 13</pre>
+      <span class="res">✔ 16 y 13</span>
+    </div>
+    <div class="say-strip">
+      Integrante 2: “En la primera, los pares 4, 8, 10, 6 y 2 dan 30, y los impares 7, 9, 11, 13 y 1 dan 41. En la segunda todos son pares, así que impares queda en cero. Y en la tercera vemos que también funciona con negativos: el cero se toma como par.”
+    </div>
+  </div>
+
+  <!-- =================== CIERRE =================== -->
+  <div class="close">
+    <h3>Cierre · ≈20 s · (ambos)</h3>
+    <p style="font-style:italic;color:var(--muted)">“En resumen, aplicamos arreglos, ciclos for, ciclos anidados, condicionales y el operador módulo para resolver los dos ejercicios en Java. Gracias por ver el video.”</p>
+    <h3 style="margin-top:18px">Checklist antes de subir</h3>
+    <ul class="check">
+      <li>Aparecen y hablan los 2 integrantes</li>
+      <li>Se ejecutó el código en pantalla (Eclipse/NetBeans)</li>
+      <li>3 pruebas por programa como mínimo</li>
+      <li>Se explicó el diagrama de flujo de cada programa</li>
+      <li>El .zip incluye los 2 .java y los 2 diagramas .jpg</li>
+      <li>Buen audio y pantalla legible (zoom al código)</li>
+    </ul>
+  </div>
+
+  <footer>Guion visual — Actividad 6 · Lógica de Programación · Java. Abrir en el navegador; se puede imprimir o exportar a PDF (Ctrl/Cmd + P).</footer>
+
+</div>
+</body>
+</html>
